@@ -1,0 +1,43 @@
+pipeline {
+    agent any
+        
+        stages {
+            stage('Initialize Stage') {
+                steps {
+                    echo 'Initial : Delete containers and images'
+                     dir('DevToolProject') {
+                        echo "Current path is  ${pwd()}"
+                        sh 'docker-compose down --rmi all --volumes || true'
+                        echo "Test Web-hook"
+                     }
+                }
+            }
+
+            stage('Build Stage'){
+                steps {
+                    dir('DevToolProject') {
+                        echo "Current path is ${pwd()}"
+                        sh "docker-compose build"
+                    }
+                }
+            }
+
+            stage('Push Stage'){
+                steps {
+                    dir('DevToolProject') {
+                        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                            sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
+                        }
+                        sh 'docker push jeeraphat/my-backend_image:1.0'
+                        sh 'docker push jeeraphat/my-frontend_image:1.0'
+                    }
+                }
+            }
+            
+            stage('Trigger to slave job'){
+                steps {
+                    build job: 'Jenkinsfile_slave'
+                }
+            }
+        }
+}

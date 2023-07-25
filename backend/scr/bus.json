@@ -1,0 +1,17 @@
+[
+  {
+    "id": "1",
+    "busNumber": "552",
+    "driverName": "John Doe"
+  },
+  {
+    "id": "2",
+    "busNumber": "145",
+    "driverName": "Jane Smith"
+  },
+  {
+    "id": "3",
+    "busNumber": "365",
+    "driverName": "Bob Johnson"
+  }
+]

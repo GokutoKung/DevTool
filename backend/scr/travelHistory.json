@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "startStation": "Pak Nam",
+    "startTime": "07:30",
+    "endStation": "KMITL",
+    "endTime": "08:30",
+    "date": "01/04/2566",
+    "price": 25
+  },
+  {
+    "id": 2,
+    "startStation": "KMITL",
+    "startTime": "16:00",
+    "endStation": "Pak Nam",
+    "endTime": "18:00",
+    "date": "01/04/2566",
+    "price": 25
+  },
+  {
+    "id": 3,
+    "startStation": "Pak Nam",
+    "startTime": "07:30",
+    "endStation": "KMITL",
+    "endTime": "08:30",
+    "date": "02/04/2566",
+    "price": 25
+  }
+]
